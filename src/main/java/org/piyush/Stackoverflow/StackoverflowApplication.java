@@ -8,6 +8,7 @@ public class StackoverflowApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(StackoverflowApplication.class, args);
+		
 	}
 
 }
