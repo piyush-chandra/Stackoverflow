@@ -21,7 +21,6 @@
       onCreate = {
         install = "mvn clean install";
       };
-      # Runs when a workspace is (re)started
       onStart = {
         run-server = "PORT=3000 mvn spring-boot:run";
       };
