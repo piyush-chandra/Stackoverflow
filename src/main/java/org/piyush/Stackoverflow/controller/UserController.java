@@ -3,13 +3,16 @@ package org.piyush.Stackoverflow.controller;
 import java.util.List;
 
 import org.piyush.Stackoverflow.dto.UserLoginRequest;
+import org.piyush.Stackoverflow.dto.UserSignUpRequest;
 import org.piyush.Stackoverflow.entity.Users;
 import org.piyush.Stackoverflow.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,21 +29,36 @@ public class UserController {
     private UserService userService;
     
     @PostMapping("/signUp")
-    private Users userSignUp(@RequestBody Users  user){
+    private ResponseEntity<?> userSignUp(@RequestBody UserSignUpRequest  userRequest){
         logger.info("inside User sign up request");
-        return userService.userSignUp(user);
+        try {
+            Users user = userService.userSignUp(userRequest);
+            return new ResponseEntity<>(user, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        } 
     } 
 
     @PostMapping("/login")
-    private Users userLogin(@RequestBody UserLoginRequest userLoginRequest){
+    private ResponseEntity<?> userLogin(@RequestBody UserLoginRequest userLoginRequest){
         logger.info("inside User login request");
-        return userService.userLogin(userLoginRequest);
+        try {
+            Users user = userService.userLogin(userLoginRequest);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        } 
     } 
 
-    @GetMapping("User/{userId}")
-    private Users getUserById(@PathVariable Long userId){
+    @GetMapping("User/{userName}")
+    private ResponseEntity<?> getUserById(@PathVariable String userName){
         logger.info("inside User get by id request");
-        return userService.getUserById(userId);
+        try{
+            Users user = userService.getUserByUserName(userName);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
     } 
 
     @GetMapping("User")
@@ -50,7 +68,7 @@ public class UserController {
     } 
 
     @PostMapping("/update")
-    private Users updateUser(){
+    private Users updateUser(@RequestBody Users user){
         logger.info("inside User update request");
         return null;
     } 

@@ -16,3 +16,6 @@ d. getalluser
 e. update
 f. remove
 
+to do morning
+1) id ,paasword, isActive and isDeleted in response
+

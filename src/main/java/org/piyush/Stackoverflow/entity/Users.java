@@ -29,11 +29,9 @@ public class Users {
     @NotNull
     private String password;
 
-    @NotNull
-    private String userId;
+    private String userName;
 
-    @NotNull
-    private UserStatus isActivev = UserStatus.ACTIVE;
+    private UserStatus isActive = UserStatus.ACTIVE;
 
     private String isDeleted = "N";
 
@@ -53,7 +51,7 @@ public class Users {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", userId='" + userId + '\'' +
+                ", userId='" + userName + '\'' +
                 '}';
     }
     
