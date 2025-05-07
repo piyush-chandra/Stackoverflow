@@ -3,6 +3,8 @@ package org.piyush.Stackoverflow.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.piyush.Stackoverflow.enums.UserStatus;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -29,6 +31,11 @@ public class Users {
 
     @NotNull
     private String userId;
+
+    @NotNull
+    private UserStatus isActivev = UserStatus.ACTIVE;
+
+    private String isDeleted = "N";
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Question> questions = new ArrayList<>();

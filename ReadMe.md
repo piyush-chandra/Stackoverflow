@@ -4,3 +4,15 @@
 3) Eureka Server - Client
 4) API Gateway
 5) Spring Security
+
+
+
+
+1) UserService
+a. Signup
+b. login
+c. user/1
+d. getalluser
+e. update
+f. remove
+
