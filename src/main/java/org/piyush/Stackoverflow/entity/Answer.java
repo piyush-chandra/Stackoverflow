@@ -20,6 +20,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+// @Builder
 @NoArgsConstructor
 public class Answer {
 

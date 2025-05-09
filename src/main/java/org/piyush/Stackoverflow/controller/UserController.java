@@ -31,7 +31,9 @@ public class UserController {
     @PostMapping("/signUp")
     private ResponseEntity<?> userSignUp(@RequestBody UserSignUpRequest  userRequest){
         logger.info("inside User sign up request");
+        //controller Advice
         try {
+            // find a way to not send password, consider dto
             Users user = userService.userSignUp(userRequest);
             return new ResponseEntity<>(user, HttpStatus.CREATED);
         } catch (Exception e) {

@@ -7,6 +7,7 @@ import org.piyush.Stackoverflow.enums.UserStatus;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+// @Builder
 @NoArgsConstructor
 public class Users {
     @Id

@@ -13,6 +13,8 @@ import org.piyush.Stackoverflow.repository.UsersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+// why to use interface ->  Migration to other system, full proof, contract 
 @Service
 public class UserService {
     
@@ -28,7 +30,8 @@ public class UserService {
         if(existingUser != null){
             throw new Exception("User Name or Email already exists.");
         }
-
+        // Users.builder().name(user.getName()).email().build();
+        // builder pattern here
         Users newUser = new Users();
         newUser.setName(user.getName());
         newUser.setEmail(user.getEmail());
