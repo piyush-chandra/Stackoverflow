@@ -194,3 +194,9 @@
 2025-05-09 10:18:50 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2025-05-09 10:18:50 - o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
 2025-05-09 10:19:31 - o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 108 ms
+2025-05-09 10:22:21 - o.p.S.controller.HealthController - Inside UserController :: finally logging is working now.
+2025-05-09 10:22:41 - o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-09 10:22:41 - o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-09 10:22:41 - o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-09 10:22:42 - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-09 10:22:42 - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

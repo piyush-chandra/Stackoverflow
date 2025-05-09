@@ -2,7 +2,7 @@
 1) Logging - Done
 2) Swagger - Done
 3) Eureka Server - Client
-4) API Gateway
+4) API Gateway 
 5) Spring Security
 
 
