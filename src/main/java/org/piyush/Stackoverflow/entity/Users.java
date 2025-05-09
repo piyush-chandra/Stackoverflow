@@ -7,16 +7,16 @@ import org.piyush.Stackoverflow.enums.UserStatus;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-// @Builder
-@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,9 +33,9 @@ public class Users {
 
     private String userName;
 
-    private UserStatus isActive = UserStatus.ACTIVE;
+    private UserStatus isActive;
 
-    private String isDeleted = "N";
+    private String isDeleted;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Question> questions = new ArrayList<>();

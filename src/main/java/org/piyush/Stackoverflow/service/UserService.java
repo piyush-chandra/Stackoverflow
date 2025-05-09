@@ -30,15 +30,10 @@ public class UserService {
         if(existingUser != null){
             throw new Exception("User Name or Email already exists.");
         }
-        // Users.builder().name(user.getName()).email().build();
-        // builder pattern here
-        Users newUser = new Users();
-        newUser.setName(user.getName());
-        newUser.setEmail(user.getEmail());
-        newUser.setPassword(user.getPassword());
-        newUser.setUserName(user.getUserName());
-        newUser.setIsActive(UserStatus.ACTIVE);
-        newUser.setIsDeleted("N");
+        Users newUser = Users.builder().name(user.getName())
+        .email(user.getEmail()).password(user.getPassword())
+        .userName(user.getUserName()).isActive(UserStatus.ACTIVE)
+        .isDeleted("N").build();   
         newUser = usersRepository.save(newUser);
         return newUser;
     } 
