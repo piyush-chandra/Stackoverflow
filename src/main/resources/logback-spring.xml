@@ -23,6 +23,18 @@
     </rollingPolicy>
   </appender>
 
+  <!-- Async Appender -->
+  <appender name="AsyncRollingFile" class="ch.qos.logback.classic.AsyncAppender">
+    <queueSize>500</queueSize>
+    <discardingThreshold>0</discardingThreshold>
+    <appender-ref ref="RollingFile"/>
+  </appender>
+
+  <!-- Root Logger -->
+  <root level="INFO">
+    <appender-ref ref="AsyncRollingFile"/>
+  </root>
+
   <root level="INFO">
     <appender-ref ref="RollingFile"/>
   </root>

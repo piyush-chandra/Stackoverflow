@@ -26,11 +26,14 @@ public class Users {
     private String name;
     
     @NotNull
+    @Column(unique = true)
     private String email;
     
     @NotNull
     private String password;
 
+    @NotNull
+    @Column(unique = true)
     private String userName;
 
     private UserStatus isActive;

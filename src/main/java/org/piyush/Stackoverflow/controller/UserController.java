@@ -2,9 +2,15 @@ package org.piyush.Stackoverflow.controller;
 
 import java.util.List;
 
+import org.piyush.Stackoverflow.dto.UserDataResponse;
+import org.piyush.Stackoverflow.dto.UserDeleteRequest;
+import org.piyush.Stackoverflow.dto.UserDeleteResponse;
 import org.piyush.Stackoverflow.dto.UserLoginRequest;
+import org.piyush.Stackoverflow.dto.UserLoginResponse;
 import org.piyush.Stackoverflow.dto.UserSignUpRequest;
-import org.piyush.Stackoverflow.entity.Users;
+import org.piyush.Stackoverflow.dto.UserSignUpResponse;
+import org.piyush.Stackoverflow.dto.UserUpdateRequest;
+import org.piyush.Stackoverflow.dto.UserUpdateResponse;
 import org.piyush.Stackoverflow.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,52 +37,38 @@ public class UserController {
     @PostMapping("/signUp")
     private ResponseEntity<?> userSignUp(@RequestBody UserSignUpRequest  userRequest){
         logger.info("inside User sign up request");
-        //controller Advice
-        try {
-            // find a way to not send password, consider dto
-            Users user = userService.userSignUp(userRequest);
-            return new ResponseEntity<>(user, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        } 
+        UserSignUpResponse user = userService.userSignUp(userRequest);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     } 
 
     @PostMapping("/login")
     private ResponseEntity<?> userLogin(@RequestBody UserLoginRequest userLoginRequest){
         logger.info("inside User login request");
-        try {
-            Users user = userService.userLogin(userLoginRequest);
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        } 
+        UserLoginResponse user = userService.userLogin(userLoginRequest);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     } 
 
-    @GetMapping("User/{userName}")
+    @GetMapping("user/{userName}")
     private ResponseEntity<?> getUserById(@PathVariable String userName){
         logger.info("inside User get by id request");
-        try{
-            Users user = userService.getUserByUserName(userName);
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        }
+        UserDataResponse user = userService.getUserByUserName(userName);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     } 
 
-    @GetMapping("User")
-    private List<Users> getAllUsers(){
+    @GetMapping("user")
+    private List<UserDataResponse> getAllUsers(){
         logger.info("inside User get all request");
         return userService.getAllUsers();
     } 
 
-    @PostMapping("/update")
-    private Users updateUser(@RequestBody Users user){
+    @PostMapping("update")
+    private UserUpdateResponse updateUser(@RequestBody UserUpdateRequest user){
         logger.info("inside User update request");
-        return null;
+        return userService.updateUser(user);
     } 
 
     @PostMapping("deleteUser")
-    private String deleteUser(@RequestBody Users user){
+    private UserDeleteResponse deleteUser(@RequestBody UserDeleteRequest user){
         logger.info("inside User delete request");
         return userService.deleteUser(user);
     } 

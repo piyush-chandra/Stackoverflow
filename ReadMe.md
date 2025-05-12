@@ -21,6 +21,6 @@ to do morning
 
 // use record instead of class in DTo
 // full text search
-// async logging
-// connection pool
+// async logging - no need, done
+// connection pooĺ - already happening through hikariCP
 
