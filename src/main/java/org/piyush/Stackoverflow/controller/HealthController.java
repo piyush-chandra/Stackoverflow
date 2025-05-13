@@ -12,6 +12,6 @@ public class HealthController {
     @GetMapping("/healthCheck")
     public String health() {
         logger.info("Inside UserController :: finally logging is working now.");
-        return "UserService is running";
+        return "Service is running";
     }
 }
